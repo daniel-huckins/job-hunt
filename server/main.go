@@ -1,22 +1,18 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"os"
 )
 
 func main() {
-	r := gin.Default()
+	server := newServer()
 
-	r.Static("/assets", "./build")
-	r.LoadHTMLFiles("./client/index.html")
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.WithError(err).Fatal("error getting wd")
+	}
 
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": "Job Hunt",
-		})
-	})
+	log.Info(pwd)
 
-	r.Run(":8080")
+	server.Run(":8080")
 }

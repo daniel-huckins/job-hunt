@@ -3,7 +3,7 @@
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.jsx',
   output: {
     path: `${__dirname}/build/js`, filename: 'bundle.js'
   },
@@ -24,6 +24,7 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV'])
   ]
 }
