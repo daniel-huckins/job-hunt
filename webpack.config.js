@@ -5,7 +5,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: `${__dirname}/client`, filename: 'bundle.js'
+    path: `${__dirname}/build/js`, filename: 'bundle.js'
   },
   module: {
     loaders: [
